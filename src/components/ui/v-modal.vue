@@ -1,9 +1,9 @@
 <template>
-  <div></div>
+  <div @click="$emit('close')"></div>
   <dialog open>
     <header>
-      <h2>Create Album</h2>
-      <button type="button">
+      <h2>{{ title }}</h2>
+      <button type="button" @click="$emit('close')">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -22,10 +22,10 @@
       </button>
     </header>
     <section>
-      <p>Testing</p>
+      <slot name="section"></slot>
     </section>
     <menu>
-      <VButton content="Create" />
+      <slot name="actions"> </slot>
     </menu>
   </dialog>
 </template>
@@ -37,6 +37,7 @@ export default {
     VButton,
   },
   props: ["title"],
+  emits: ["close"],
 };
 </script>
 
@@ -68,7 +69,7 @@ dialog {
 header {
   background-color: #f1f5f9;
   color: #1e293b;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -98,11 +99,18 @@ header button svg:hover {
 }
 
 section {
-  padding: 1rem 1.25rem;
+  padding: 0.5rem 1.5rem;
+}
+
+section p {
+  color: #1e293b;
+  font-size: 1.1rem;
+  text-align: left;
+  line-height: 1.75rem;
 }
 
 menu {
-  padding: 1.25rem;
+  padding: 1.25rem 1.5rem;
   display: flex;
   justify-content: flex-end;
   margin: 0;

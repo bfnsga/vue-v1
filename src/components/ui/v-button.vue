@@ -97,13 +97,14 @@ button {
 .secondary {
   background-color: #ffffff;
   border-color: #ffffff;
-  color: #1e293b;
+  color: #cbd5e1;
 }
 
 .secondary:hover,
 .secondary:active {
   background-color: #f8fafc;
   border-color: #f8fafc;
+  color: #94a3b8;
 }
 
 svg {

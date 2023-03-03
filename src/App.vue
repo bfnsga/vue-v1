@@ -2,6 +2,8 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import VButton from "./components/ui/v-button.vue";
 import VModal from "./components/ui/v-modal.vue";
+
+export default {};
 </script>
 
 <template>
@@ -15,7 +17,15 @@ import VModal from "./components/ui/v-modal.vue";
   </div>
   <v-button :loading="false">Submit</v-button>
   <HelloWorld msg="Vite + Vue" />
-  <VModal />
+  <v-modal title="Create Album">
+    <template #section>
+      <p>Testing</p>
+    </template>
+    <template #actions>
+      <VButton content="Cancel" type="secondary" style="margin-right: 10px" />
+      <VButton content="Create" />
+    </template>
+  </v-modal>
 </template>
 
 <style scoped>
