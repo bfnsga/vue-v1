@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
-import VButton from "./components/v-button.vue";
+import VButton from "./components/ui/v-button.vue";
+import VModal from "./components/ui/v-modal.vue";
 </script>
 
 <template>
@@ -12,8 +13,9 @@ import VButton from "./components/v-button.vue";
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <v-button></v-button>
+  <v-button :loading="false">Submit</v-button>
   <HelloWorld msg="Vite + Vue" />
+  <VModal />
 </template>
 
 <style scoped>

@@ -1,44 +1,27 @@
 <template>
   <button :class="computedClasses" :disabled="disabled">
     <span class="content" :class="{ invisible: loading }">
-      <slot> Cancel </slot>
+      {{ content }}
     </span>
     <div v-if="loading">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="spinner"
-        width="100px"
-        height="100px"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="xMidYMid"
-      >
-        <circle
-          cx="50"
-          cy="50"
-          r="32"
-          stroke-width="8"
-          stroke="currentColor"
-          stroke-dasharray="50.26548245743669 50.26548245743669"
-          fill="none"
-          stroke-linecap="round"
-        >
-          <animateTransform
-            attributeName="transform"
-            type="rotate"
-            repeatCount="indefinite"
-            dur="1.5s"
-            keyTimes="0;1"
-            values="0 50 50;360 50 50"
-          ></animateTransform>
-        </circle>
-      </svg>
+      <v-icon-spinner></v-icon-spinner>
     </div>
   </button>
 </template>
 
 <script>
+import VIconSpinner from "../icons/v-icon-spinner.vue";
+
 export default {
+  components: {
+    VIconSpinner,
+  },
   props: {
+    content: {
+      type: String,
+      required: true,
+      default: "Default Button",
+    },
     type: {
       type: String,
       default: "primary",
@@ -73,7 +56,7 @@ button {
   padding: 0.575rem 2rem;
   border-radius: 0.06125rem;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.06125rem;
   border: 1px solid;
   color: white;
@@ -141,12 +124,6 @@ svg {
 }
 .invisible {
   visibility: hidden;
-}
-.spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .flat {
