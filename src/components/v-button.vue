@@ -1,7 +1,7 @@
 <template>
   <button :class="computedClasses" :disabled="disabled">
     <span class="content" :class="{ invisible: loading }">
-      <slot> Cancel </slot>
+      <slot> Default Button </slot>
     </span>
     <div v-if="loading">
       <svg
