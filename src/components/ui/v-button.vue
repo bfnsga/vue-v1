@@ -53,11 +53,11 @@ export default {
 <style scoped>
 button {
   position: relative;
-  padding: 0.575rem 2rem;
+  padding: 0.625rem 2.5rem;
   border-radius: 0.06125rem;
   font-family: inherit;
   font-weight: 600;
-  font-size: 1.06125rem;
+  font-size: 1rem;
   border: 1px solid;
   color: white;
   cursor: pointer;
@@ -97,13 +97,14 @@ button {
 .secondary {
   background-color: #ffffff;
   border-color: #ffffff;
-  color: #1e293b;
+  color: #cbd5e1;
 }
 
 .secondary:hover,
 .secondary:active {
   background-color: #f8fafc;
   border-color: #f8fafc;
+  color: #94a3b8;
 }
 
 svg {

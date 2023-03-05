@@ -1,22 +1,40 @@
-<script setup lang="ts">
+<template>
+	<VButton content="Open Modal" @click="createAlbumModal = !createAlbumModal" />
+	<HelloWorld msg="Vite + Vue" />
+	<v-modal v-if="createAlbumModal" title="Create Album" @close="createAlbumModal = !createAlbumModal">
+		<template #section>
+			<p>
+				Are you sure you want to delete these 2 items?
+			</p>
+		</template>
+		<template #actions>
+			<VButton content="Create" />
+		</template>
+	</v-modal>
+</template>
+
+<script>
 import HelloWorld from "./components/HelloWorld.vue";
 import VButton from "./components/ui/v-button.vue";
 import VModal from "./components/ui/v-modal.vue";
-</script>
+import VInput from "./components/ui/v-input.vue";
+import VFormControl from "./components/ui/v-form-control.vue";
 
-<template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <v-button :loading="false">Submit</v-button>
-  <HelloWorld msg="Vite + Vue" />
-  <VModal />
-</template>
+export default {
+	components: {
+		HelloWorld,
+		VButton,
+		VModal,
+		VInput,
+		VFormControl
+	},
+	data() {
+		return {
+			createAlbumModal: false
+		};
+	}
+}
+</script>
 
 <style scoped>
 .logo {
@@ -31,4 +49,16 @@ import VModal from "./components/ui/v-modal.vue";
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
+
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
 </style>
