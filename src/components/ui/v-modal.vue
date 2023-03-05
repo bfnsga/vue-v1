@@ -1,48 +1,44 @@
 <template>
-  <div @click="$emit('close')"></div>
-  <dialog open>
-    <header>
-      <h2>{{ title }}</h2>
-      <button type="button" @click="$emit('close')">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-          <path d="M18 6l-12 12"></path>
-          <path d="M6 6l12 12"></path>
-        </svg>
-      </button>
-    </header>
-    <section>
-      <slot name="section"></slot>
-    </section>
-    <menu>
-      <slot name="actions"> </slot>
-    </menu>
-  </dialog>
+	<transition name="fade" appear>
+		<div class="background"></div>
+	</transition>
+	<Transition>
+		<dialog open>
+			<header>
+				<h2>{{ title }}</h2>
+				<button type="button" @click="$emit('close')">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+						<path d="M18 6l-12 12"></path>
+						<path d="M6 6l12 12"></path>
+					</svg>
+				</button>
+			</header>
+			<div class="section">
+				<div>
+					<slot name="section"></slot>
+				</div>
+				<div class="menu">
+					<slot name="actions"></slot>
+				</div>
+			</div>
+		</dialog>
+	</Transition>
 </template>
 
 <script>
 import VButton from "./v-button.vue";
 export default {
-  components: {
-    VButton,
-  },
-  props: ["title"],
-  emits: ["close"],
+	components: {
+		VButton,
+	},
+	props: ["title"],
+	emits: ["close"]
 };
 </script>
 
 <style scoped>
-div {
+.background {
   position: fixed;
   top: 0;
   left: 0;
@@ -54,7 +50,7 @@ div {
 
 dialog {
   position: fixed;
-  top: 20vh;
+  top: 15vh;
   left: 10%;
   width: 80%;
   z-index: 100;
@@ -89,7 +85,7 @@ header button {
 
 header button svg {
   color: #94a3b8;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
   width: 1.25rem;
   height: 1.25rem;
 }
@@ -98,22 +94,22 @@ header button svg:hover {
   color: #475569;
 }
 
-section {
-  padding: 0.5rem 1.5rem;
+.section {
+  padding: 1rem 2rem 1.75rem 2rem;
 }
 
-section p {
+p {
   color: #1e293b;
   font-size: 1.1rem;
   text-align: left;
-  line-height: 1.75rem;
+  line-height: 2rem;
+  text-align: left;
 }
 
-menu {
-  padding: 1.25rem 1.5rem;
+.menu {
   display: flex;
-  justify-content: flex-end;
-  margin: 0;
+  justify-content: flex-start;
+  padding-top: 0.875rem;
 }
 
 @media (min-width: 768px) {
@@ -121,5 +117,19 @@ menu {
     left: calc(50% - 17rem);
     width: 34rem;
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

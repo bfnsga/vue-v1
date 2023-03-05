@@ -53,11 +53,11 @@ export default {
 <style scoped>
 button {
   position: relative;
-  padding: 0.575rem 2rem;
+  padding: 0.625rem 2.5rem;
   border-radius: 0.06125rem;
   font-family: inherit;
   font-weight: 600;
-  font-size: 1.06125rem;
+  font-size: 1rem;
   border: 1px solid;
   color: white;
   cursor: pointer;
