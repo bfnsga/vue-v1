@@ -6,6 +6,11 @@
 			<p>
 				Are you sure you want to delete these 2 items?
 			</p>
+			<v-form-control>
+				<template #inputs>
+					<v-input type="text" span="1"></v-input>
+				</template>
+			</v-form-control>
 		</template>
 		<template #actions>
 			<VButton content="Create" />
