@@ -1,14 +1,14 @@
 <template>
-  <div
-    :class="{ 'col-span-1': colSpan === '1', 'col-span-2': colSpan === '2' }"
-  >
+  <div :class="{ 'col-span-1': colSpan === '1', 'col-span-2': colSpan === '2' }">
     <label v-if="label" :for="id">{{ label }}</label>
     <input :type="type" :id="id" :name="id" :placeholder="placeholder" />
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   props: {
     label: {
       type: String,
@@ -43,7 +43,7 @@ export default {
       }
     },
   },
-};
+});
 </script>
 
 <style scoped>

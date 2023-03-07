@@ -13,14 +13,15 @@
 	</v-modal>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import HelloWorld from "./components/HelloWorld.vue";
 import VButton from "./components/ui/v-button.vue";
 import VModal from "./components/ui/v-modal.vue";
 import VInput from "./components/ui/v-input.vue";
 import VFormControl from "./components/ui/v-form-control.vue";
 
-export default {
+export default defineComponent({
 	components: {
 		HelloWorld,
 		VButton,
@@ -33,7 +34,7 @@ export default {
 			createAlbumModal: false
 		};
 	}
-}
+})
 </script>
 
 <style scoped>
