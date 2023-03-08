@@ -1,40 +1,42 @@
 <template>
-	<transition name="fade" appear>
-		<div class="background"></div>
-	</transition>
-	<Transition>
-		<dialog open>
-			<header>
-				<h2>{{ title }}</h2>
-				<button type="button" @click="$emit('close')">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-						<path d="M18 6l-12 12"></path>
-						<path d="M6 6l12 12"></path>
-					</svg>
-				</button>
-			</header>
-			<div class="section">
-				<div>
-					<slot name="section"></slot>
-				</div>
-				<div class="menu">
-					<slot name="actions"></slot>
-				</div>
-			</div>
-		</dialog>
-	</Transition>
+  <transition name="fade" appear>
+    <div class="background"></div>
+  </transition>
+  <Transition>
+    <dialog open>
+      <header>
+        <h2>{{ title }}</h2>
+        <button type="button" @click="$emit('close')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M18 6l-12 12"></path>
+            <path d="M6 6l12 12"></path>
+          </svg>
+        </button>
+      </header>
+      <div class="section">
+        <div>
+          <slot name="section"></slot>
+        </div>
+        <div class="menu">
+          <slot name="actions"></slot>
+        </div>
+      </div>
+    </dialog>
+  </Transition>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import VButton from "./v-button.vue";
-export default {
-	components: {
-		VButton,
-	},
-	props: ["title"],
-	emits: ["close"]
-};
+
+export default defineComponent({
+  components: {
+    VButton,
+  },
+  props: ["title"],
+  emits: ["close"]
+});
 </script>
 
 <style scoped>

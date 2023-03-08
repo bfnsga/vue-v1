@@ -9,10 +9,11 @@
   </button>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import VIconSpinner from "../icons/v-icon-spinner.vue";
 
-export default {
+export default defineComponent({
   components: {
     VIconSpinner,
   },
@@ -47,7 +48,7 @@ export default {
       return classArray;
     },
   },
-};
+});
 </script>
 
 <style scoped>

@@ -1,49 +1,32 @@
 <template>
-  <div
-    :class="{ 'col-span-1': colSpan === '1', 'col-span-2': colSpan === '2' }"
-  >
+  <div :class="inputSpan">
     <label v-if="label" :for="id">{{ label }}</label>
     <input :type="type" :id="id" :name="id" :placeholder="placeholder" />
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    label: {
-      type: String,
-      required: false,
-    },
-    colSpan: {
-      type: String,
-      required: false,
-      default: "1",
-    },
-    type: {
-      type: String,
-      required: true,
-      default: "text",
-    },
-    id: {
-      type: String,
-      required: false,
-    },
-    placeholder: {
-      type: String,
-      required: false,
-      default: "",
-    },
-  },
-  computed: {
-    inputColumnSpan() {
-      if (colSpan === 1) {
-        return { "col-span-1": colSpan === 1 };
-      } else {
-        return { "col-span-2": colSpan === 2 };
-      }
-    },
-  },
-};
+<script setup lang='ts'>
+import { computed } from 'vue';
+
+interface Props {
+  type: string,
+  label?: string,
+  span?: string,
+  id?: string,
+  placeholder?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  type: 'text',
+  span: '2'
+});
+
+const inputSpan = computed(() => {
+  if (props.span === '1') {
+    return ['col-span-1'];
+  }
+});
+
 </script>
 
 <style scoped>
